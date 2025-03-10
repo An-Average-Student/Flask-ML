@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecoil - Oil Classifier</title>
+    <style>
+        body { 
+            background-color: #8BC34A; /* Green background */
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        .container { 
+            background-color: white;
+            padding: 20px;
+            max-width: 400px;
+            margin: auto;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        h1, h3 { color: #333; }
+        input[type="file"] {
+            margin: 10px 0;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50; /* Green button */
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        input[type="submit"]:hover {
+            background-color: #388E3C;
+        }
+        .uploaded-image {
+            margin-top: 15px;
+            max-width: 100%;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Ecoil - Oil Classifier</h1>
+        <h3>Upload an image of the oil to check if it is reusable</h3>
+
+        <form action="/predict" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" accept="image/*" required>
+            <br><br>
+            <input type="submit" value="Upload and Classify">
+        </form>
+
+        {% if prediction %}
+            <h2>Prediction: {{ prediction }}</h2>
+            {% if image_url %}
+                <img src="{{ image_url }}" alt="Uploaded Image" class="uploaded-image">
+            {% endif %}
+        {% endif %}
+    </div>
+
+</body>
+</html>
