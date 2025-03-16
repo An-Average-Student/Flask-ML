@@ -4,7 +4,6 @@ import numpy as np
 import tensorflow as tf
 import cv2
 import pickle
-import gdown  # Added for downloading from Google Drive
 from werkzeug.utils import secure_filename
 
 # Initialize Flask app
